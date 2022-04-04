@@ -8,7 +8,7 @@ public class Player {
     //business methods
 
     //MOVE THIS METHOD TO GAME CLASS
-    public static String chooseGesture() {
+    public String chooseGesture() {
         Player player = new Player();
 
         Scanner scanner = new Scanner(System.in);
@@ -19,11 +19,12 @@ public class Player {
                 + "\n [5] Spock"
                 + "\n\nPlease enter a number for your selection: ");
         player.selection = scanner.nextLine();
-        return player.selection;
+        player.selection = selection;
+        return selection;
     }
 
     //MOVE THIS METHOD TO GAME CLASS
-    public static void displayGesture() {
+    public void displayGesture() {
         switch(selection) {
             case "1":
                 selection = Gestures.ROCK.toString();
