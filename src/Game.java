@@ -7,7 +7,7 @@ public class Game {
     public void startGame() {
         displayWelcome();
         getGesture();
-        displayGesture();
+//        displayGesture();
     }
 
     public void displayWelcome() {
@@ -49,29 +49,4 @@ public class Game {
         Player player = new Player();
         player.chooseGesture();
     }
-
-    public void displayGesture() {
-        Player player = new Player();
-        switch(player.selection) {
-            case "1":
-                player.selection = Gestures.ROCK.toString();
-                break;
-            case "2":
-                player.selection = Gestures.PAPER.toString();
-                break;
-            case "3":
-                player.selection = Gestures.SCISSORS.toString();
-                break;
-            case "4":
-                player.selection = Gestures.LIZARD.toString();
-                break;
-            case "5":
-                player.selection = Gestures.SPOCK.toString();
-                break;
-
-        }
-        System.out.println("You selected: " + player.selection ); //substitute "You" with player name variable
-        //display ascii art for selected gesture here.
-    }
-
 }
