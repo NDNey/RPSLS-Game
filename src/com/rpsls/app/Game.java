@@ -119,7 +119,7 @@ public class Game {
             for (int i = 0; i < playerGesture.size(); i++) {
                 // you want to look at System.out.printf() for "aligned" output
 
-                System.out.printf("%1s%30s   %n", playerGesture.get(i) ,  botGesture.get(i));
+                System.out.printf("%1$8s %2$20s %n", playerGesture.get(i) ,  botGesture.get(i));
 
             }
 
