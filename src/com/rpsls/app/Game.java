@@ -1,30 +1,48 @@
 package com.rpsls.app;
 
+
+import com.apps.util.Console;
+import com.apps.util.Prompter;
+
 import com.rpsls.Choice;
 import com.rpsls.Player;
 
-import static com.rpsls.Choice.*;
+//import static com.rpsls.Choice.*;
+
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
 
+
     private final Scanner scanner = new Scanner(System.in);
     private static final String bannerPath = "data/banner2.txt";
     private static Player bot = new Player(1, "Bot");
-   private int playerWins = 0;
-    private  int cpuWins = 0;
+    private int playerWins = 0;
+    private int cpuWins = 0;
+
+
+    Prompter prompter = new Prompter(new Scanner(System.in));
 
     public void execute() {
         welcome();
-        prompForRules();
+        rules();
+        Console.clear();
+        Console.blankLines(3);
+
         while (playerWins < 5 && cpuWins < 5) {
-            Choice playerChoice = prompForChoice();
+            String playerInput = prompter.prompt("Please enter RPSLS: ", "(?i)[r,p,s,l,x]", "error");
+           Choice playerChoice = Choice.get(playerInput);
             Choice botChoice = bot.randomChoice();
+            win(playerChoice , botChoice );
+
+
             displayGesture(playerChoice,botChoice);
-            System.out.println("did player win? " +  win(playerChoice, botChoice ));
+
             System.out.println("playerChoice: " + playerChoice + ", " + "botChoice: " + botChoice);
 
             System.out.println("playerWins: " + playerWins);
@@ -33,108 +51,46 @@ public class Game {
 
     }
 
-    private int comparasionMatrix(Choice player, Choice bot) {
-        int result = 0;
 
-        int[][] comparasionMatrix =  //Matrix will help decide case win, lose, tie.
-                {{0, 2, 1, 1, 2}, // rock
-                {1, 0, 2, 2, 1}, // paper
-                {2, 1, 0, 1, 2}, // scissors
-                {2, 1, 2, 0,1},  // lizard
-                {1, 2, 1, 2, 0}}; // spock
 
-        int botChoiceIndex = Choice.valueOf(bot.toString()).ordinal();
-        int playerChoiceIndex = Choice.valueOf(player.toString()).ordinal();
-
-        result = comparasionMatrix[playerChoiceIndex][botChoiceIndex];
-
-        System.out.println("result: " + result);
-
-        return result;
-    }
-
-    private boolean win(Choice player, Choice bot) {
+    private void win(Choice player, Choice bot) {
         // if comparasionMatrix == 1 player wins.
-        boolean result = false;
-        if (comparasionMatrix(player,bot) == 1) {
+        if (Choice.compare(player,bot) == 1) {
+            System.out.println("you win! you get 1 point");
             playerWins++;
-            result = true;
-        }
-        else if (comparasionMatrix(player,bot) == 2) {
+        } else if (Choice.compare(player,bot) == 2) {
+            System.out.println("Computer wins! Computer gets 1 point");
             cpuWins++;
         }
 
-        return result;
     }
 
-    private Choice prompForChoice() {
-         Choice choice = null;
 
-        boolean validInput = false;
-        while (!validInput) {
-            System.out.print("Please enter RPSLS: ");
-            String input = scanner.nextLine();
-            if (input.matches("(?i)[r,p,s,l,x]")) {
-                // Choice choice = Choice.get(input);
-                switch (input){
-                    case "r":
-                        choice = ROCK;
-                        break;
-                    case "p" :
-                        choice = PAPER;
-                        break;
-                    case "s":
-                        choice = SCISSORS;
-                        break;
-                    case "l":
-                        choice = LIZARD;
-                        break;
-                    case "x":
-                        choice = SPOCK;
-                        break;
-                }
-                validInput = true;
-            }
-        }
-        return choice;
-    }
+    private void rules() {
+        String showRules = prompter.prompt("Read Game Rules [Y] [N]: ", "(?i)[y,n]", "error");
 
-    private void prompForRules() {
-        boolean  rules = false;
-
-        boolean validInput = false;
-        while (!validInput) {
-            System.out.print("Read Game Rules [Y] [N]: ");
-            String input = scanner.nextLine();
-            if (input.matches("(?i)[y,n]")) {
-
-                validInput = true;
-                if(input.equals("Y") || input.equals("y")) {
-                    System.out.println("Game Rules"  //clean up this to show what each one loses to and wins against on one line
-                            + "\n\nObserve the following rules: "
-                            + "\nRock crushes Scissors."
-                            + "\nScissors cuts Paper."
-                            + "\nPaper covers Rock."
-                            + "\nRock crushes Lizard."
-                            + "\nLizard poisons Spock."
-                            + "\nSpock smashes Scissors."
-                            + "\nScissors decapitates Lizard."
-                            + "\nLizard eats Paper."
-                            + "\nPaper disproves Spock."
-                            + "\nSpock vaporizes Rock."
-                            + "\n\nIf the gesture you select defeats the opponent's selected gesture, you gain a point."
-                            + "\nThe first player to gain 5 points, wins the match!"
-                    );
-                }
-
-            }
+        if (showRules.equals("y")) {
+            System.out.println("Game Rules"  //clean up this to show what each one loses to and wins against on one line
+                    + "\n\nObserve the following rules: "
+                    + "\nRock crushes Scissors."
+                    + "\nScissors cuts Paper."
+                    + "\nPaper covers Rock."
+                    + "\nRock crushes Lizard."
+                    + "\nLizard poisons Spock."
+                    + "\nSpock smashes Scissors."
+                    + "\nScissors decapitates Lizard."
+                    + "\nLizard eats Paper."
+                    + "\nPaper disproves Spock."
+                    + "\nSpock vaporizes Rock."
+                    + "\n\nIf the gesture you select defeats the opponent's selected gesture, you gain a point."
+                    + "\nThe first player to gain 5 points, wins the match!"
+            );
         }
 
     }
 
-//    showBoard()
 
-    private void welcome()  {
+    public void welcome() {
 
         String banner = null;
         try {
@@ -143,7 +99,7 @@ public class Game {
             e.printStackTrace();
         }
 
-        System.out.print( banner);
+        System.out.print(banner);
 
         System.out.println();
         System.out.println("Welcome to RPSLS.  A game created by GI Java.");
@@ -152,17 +108,22 @@ public class Game {
     }
 
 
-
-    private void displayGesture(Choice player, Choice bot)  {
-        String playerSelection = "data/" +  player.toString().toLowerCase();
-        String botSelection =  "data/" + bot.toString().toLowerCase();
+    private void displayGesture(Choice player, Choice bot) {
+        String playerSelection = "data/" + player.toString().toLowerCase();
+        String botSelection = "data/" + bot.toString().toLowerCase();
+        String output = "";
 
         try {
-           String playerGesture = Files.readString(Path.of(playerSelection));
-           String botGesture = Files.readString(Path.of(botSelection));
+            List<String> playerGesture = Files.readAllLines(Path.of(playerSelection));
+            List<String> botGesture = Files.readAllLines(Path.of(botSelection));
+            for (int i = 0; i < playerGesture.size(); i++) {
+                // you want to look at System.out.printf() for "aligned" output
 
-            System.out.println(playerGesture);
-            System.out.println(botGesture);
+                System.out.printf("%1s%30s   %n", playerGesture.get(i) ,  botGesture.get(i));
+
+            }
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -170,3 +131,4 @@ public class Game {
     }
 
 }
+
