@@ -59,7 +59,7 @@ public class Game {
 
     private void play () {
         while (playerWins < 5 && cpuWins < 5) {
-            String playerInput = prompter.prompt("Please enter your selection: [r]ock [p]aper [s]cissors [l]izard [x]spock ",
+            String playerInput = prompter.prompt("Please enter your selection: [r]ock [p]aper [s]cissors [l]izard [x]spock: ",
                     "(?i)[r,p,s,l,x]", "Invalid selection.  Please try again.");
             Choice playerChoice = Choice.get(playerInput);
             Choice botChoice = bot.randomChoice();
