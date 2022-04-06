@@ -35,7 +35,6 @@ public class Game {
         welcome();
         rules();
         Console.blankLines(2);
-        Console.clear();
         play();
         String playAgain = PROMPTER.prompt("Would you like to play again? [y][n]: ",
                 "(?i)[y,n]", "Invalid selection.  Please try again.");
@@ -54,10 +53,10 @@ public class Game {
     private void play () {
 
         while (playerWins < MAX_GAME && cpuWins < MAX_GAME) {
-            Console.clear();
 
             String playerInput = PROMPTER.prompt("Please enter your selection: [r]ock [p]aper [s]cissors [l]izard [x]spock: ",
                     "(?i)[r,p,s,l,x]", "Invalid selection.  Please try again.");
+            Console.clear();
 
             Choice playerChoice = Choice.get(playerInput);
             Choice botChoice = bot.randomChoice();
