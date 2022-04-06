@@ -6,9 +6,8 @@ public enum Choice {
 
    public static Choice get(String playerChoice) {
         Choice choice = null;
-        playerChoice.toLowerCase();
 
-        switch (playerChoice){
+        switch (playerChoice.toLowerCase()){
             case "r":
                 choice = ROCK;
                 break;
@@ -28,7 +27,7 @@ public enum Choice {
         return choice;
     }
 
-    public static int compare(Choice player, Choice bot) {
+    public static int compare(Choice playerChoice, Choice botChoice) {
         int result = 0;
 
         int[][] comparasionMatrix =  //Matrix will help decide case win, lose, tie.
@@ -38,8 +37,8 @@ public enum Choice {
                         {2, 1, 2, 0, 1},  // lizard
                         {1, 2, 1, 2, 0}}; // spock
 
-        int botChoiceIndex = Choice.valueOf(bot.toString()).ordinal();
-        int playerChoiceIndex = Choice.valueOf(player.toString()).ordinal();
+        int botChoiceIndex = Choice.valueOf(botChoice.toString()).ordinal();
+        int playerChoiceIndex = Choice.valueOf(playerChoice.toString()).ordinal();
 
         result = comparasionMatrix[playerChoiceIndex][botChoiceIndex];
 

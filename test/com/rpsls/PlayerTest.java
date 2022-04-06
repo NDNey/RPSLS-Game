@@ -1,32 +1,32 @@
 package com.rpsls;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.theories.internal.EnumSupplier;
 
 import static org.junit.Assert.*;
 
 public class PlayerTest {
+    Player player;
 
-    @Test
-    public void win() {
+    @Before
+    public void setUp() {
+        player = new Player(1, "Player 1");
     }
 
     @Test
-    public void getId() {
+    public void randomChoice_whenMethodCalled_isNotEqualNull() {
+        assertNotNull(player.randomChoice());
     }
 
-    @Test
-    public void getName() {
-    }
+    // We will test if random test is between 1-5
+//    @Test
+//    public void randomChoice_whenMethodCalled_needsToReturnOneOfTheEnumChoices() {
+//        String[] strings =
+//    }
 
     @Test
-    public void getWins() {
-    }
-
-    @Test
-    public void randomChoice() {
-    }
-
-    @Test
-    public void testToString() {
+    public void toString_willReturnMessage_whenToStringMethodIsCalled() {
+        assertEquals("Player: id=1, name=Player 1, wins=0", player.toString());
     }
 }
