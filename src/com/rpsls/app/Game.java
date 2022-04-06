@@ -86,7 +86,6 @@ public class Game {
                     + "\nThe first player to gain 5 points, wins the match!"
             );
         }
-
     }
 
 
@@ -122,8 +121,6 @@ public class Game {
                 System.out.printf("%1$8s %2$20s %n", playerGesture.get(i) ,  botGesture.get(i));
 
             }
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
