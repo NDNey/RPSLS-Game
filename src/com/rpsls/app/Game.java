@@ -39,7 +39,7 @@ public class Game {
         String playAgain = PROMPTER.prompt("Would you like to play again? [y][n]: ",
                 "(?i)[y,n]", "Invalid selection.  Please try again.");
 
-      while (playAgain.equals("y")) {
+      while (playAgain.matches("(?i)y")) {
           playerWins = 0;
           cpuWins = 0;
           play();
