@@ -23,6 +23,12 @@ public class Game {
     private static final String bannerPath = "data/banner2.txt";
     private static final String playerBanner = "data/youwin.txt";
     private static final String botBanner = "data/cpuwins.txt";
+
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[41m";
+    public static final String ANSI_GREEN = "\u001B[42m";
+    public static final String ANSI_YELLOW = "\u001B[43m";
+
     private static Player bot = new Player(1, "Bot");
     private int playerWins = 0;
     private int cpuWins = 0;
@@ -42,9 +48,10 @@ public class Game {
             Choice playerChoice = Choice.get(playerInput);
             Choice botChoice = bot.randomChoice();
             displayGesture(playerChoice,botChoice);
-            System.out.println(" You selected: " + playerChoice + "         "  + "Bot selected: " + botChoice);
+
+            System.out.println(" You selected: " + playerChoice + "         "  + "CPU selected: " + botChoice);
             win(playerChoice , botChoice );
-            System.out.println("\nScore:  Player: " + playerWins + " || " + "Bot: " + cpuWins + "\n");
+            System.out.println("\nScore:  Player: " + playerWins + " || " + "CPU: " + cpuWins + "\n");
 
             if (playerWins == 5) {
                 System.out.println("You are the first to 5 points.  You win the match!");
@@ -76,14 +83,14 @@ public class Game {
     private void win(Choice player, Choice bot) {
         // if comparasionMatrix == 1 player wins.
         if (Choice.compare(player,bot) == 1) {
-            System.out.println("\nYou win! You gained a point.");
+            System.out.println("\n" + ANSI_GREEN + "You win! You gained a point." + ANSI_RESET);
             playerWins++;
         } else if (Choice.compare(player,bot) == 2) {
-            System.out.println("\nBot wins! Bot gains a point.");
+            System.out.println("\n" + ANSI_RED + "CPU wins! CPU gains a point." + ANSI_RESET);
             cpuWins++;
         }
         else {
-            System.out.println("\nTie! No points awarded.");
+            System.out.println("\n" + ANSI_YELLOW + "Tie! No points awarded." + ANSI_RESET);
         }
     }
 
