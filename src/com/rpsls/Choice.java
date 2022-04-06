@@ -5,22 +5,6 @@ public enum Choice {
     ROCK, PAPER, SCISSORS, LIZARD, SPOCK;
 
 
-//
-//    private final String displayValue;
-//
-//
-//    IceCreamFlavor(String displayValue) {
-//        this.displayValue = displayValue;
-//    }
-//
-//    public String display() {
-//        return displayValue;
-//    }
-//
-//    public String toString() {
-//        return display();
-//    }
-
    public static Choice get(String playerChoice) {
         Choice choice = null;
 
@@ -64,8 +48,6 @@ public enum Choice {
         else if (comparasionMatrix[playerChoiceIndex][botChoiceIndex] == 2) {
             result = "lose";
         }
-
-
 
         return result;
     }

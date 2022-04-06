@@ -3,12 +3,8 @@ package com.rpsls.app;
 
 import com.apps.util.Console;
 import com.apps.util.Prompter;
-
 import com.rpsls.Choice;
 import com.rpsls.Player;
-
-//import static com.rpsls.Choice.*;
-
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -40,18 +36,18 @@ public class Game {
         String playAgain = PROMPTER.prompt("Would you like to play again? [y][n]: ",
                 "(?i)[y,n]", "Invalid selection.  Please try again.");
 
-      while (playAgain.equals("y")) {
-          playerWins = 0;
-          cpuWins = 0;
-          play();
-          playAgain = PROMPTER.prompt("Would you like to play again? [y][n]: ",
-                  "(?i)[y,n]", "Invalid selection.  Please try again.");
-      }
+        while (playAgain.equals("y")) {
+            playerWins = 0;
+            cpuWins = 0;
+            play();
+            playAgain = PROMPTER.prompt("Would you like to play again? [y][n]: ",
+                    "(?i)[y,n]", "Invalid selection.  Please try again.");
+        }
 
     }
 
 
-    private void play () {
+    private void play() {
 
         while (playerWins < MAX_GAME && cpuWins < MAX_GAME) {
             Console.clear();
@@ -64,9 +60,9 @@ public class Game {
 
             displayGesture(playerChoice, botChoice);
 
-            System.out.println(" You selected: " + playerChoice + "         "  + "CPU selected: " + botChoice);
+            System.out.println(" You selected: " + playerChoice + "         " + "CPU selected: " + botChoice);
 
-            win(playerChoice , botChoice );
+            win(playerChoice, botChoice);
 
             System.out.println("\nScore:  Player: " + playerWins + " || " + "CPU: " + cpuWins + "\n");
         }
@@ -74,36 +70,33 @@ public class Game {
 
     private void win(Choice player, Choice bot) {
         // if comparasionMatrix == 1 player wins.
-        if (Choice.compare(player,bot).equals("win")) {
+        if (Choice.compare(player, bot).equals("win")) {
             System.out.println("\n" + ANSI_GREEN + "You win! You gained a point." + ANSI_RESET);
             playerWins++;
-        } else if (Choice.compare(player,bot).equals("lose")) {
+        } else if (Choice.compare(player, bot).equals("lose")) {
             System.out.println("\n" + ANSI_RED + "CPU wins! CPU gains a point." + ANSI_RESET);
             cpuWins++;
-        }
-        else {
+        } else {
             System.out.println("\n" + ANSI_YELLOW + "Tie! No points awarded." + ANSI_RESET);
         }
 
-        if (playerWins == MAX_GAME || cpuWins == MAX_GAME ) {
+        if (playerWins == MAX_GAME || cpuWins == MAX_GAME) {
             String winArt = "";
-            try{
+            try {
                 if (playerWins == MAX_GAME) {
-                    winArt =  Files.readString(Path.of("data/youwin.txt"));
+                    winArt = Files.readString(Path.of("data/youwin.txt"));
                     Console.blankLines(1);
                     System.out.println("You are the first to 5 points.  You win the match!");
                     Console.blankLines(1);
-                }
-                else if (cpuWins == MAX_GAME) {
-                    winArt =  Files.readString(Path.of("data/cpuwins.txt"));
+                } else if (cpuWins == MAX_GAME) {
+                    winArt = Files.readString(Path.of("data/cpuwins.txt"));
                     Console.blankLines(1);
                     System.out.println("Bot is the first to 5 points.  Bot wins the match!");
                     Console.blankLines(1);
                 }
 
                 System.out.println(winArt);
-            }
-            catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -116,7 +109,8 @@ public class Game {
         if (showRules.matches("(?i)y")) {
             try {
                 Console.blankLines(2);
-                System.out.println(Files.readString(Path.of("data/rules")));;
+                System.out.println(Files.readString(Path.of("data/rules")));
+                ;
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -151,7 +145,7 @@ public class Game {
             List<String> botGesture = Files.readAllLines(Path.of(botSelection));
             for (int i = 0; i < playerGesture.size(); i++) {
 
-                System.out.printf("%1$8s %2$20s %n", playerGesture.get(i) ,  botGesture.get(i));
+                System.out.printf("%1$8s %2$20s %n", playerGesture.get(i), botGesture.get(i));
 
             }
         } catch (IOException e) {
