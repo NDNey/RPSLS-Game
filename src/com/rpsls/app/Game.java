@@ -39,7 +39,7 @@ public class Game {
     public void execute() {
         welcome();
         rules();
-//        Console.clear();
+        Console.clear();
         Console.blankLines(3);
         play();
         String playAgain = prompter.prompt("Would you like to play again? [y][n]: ",
