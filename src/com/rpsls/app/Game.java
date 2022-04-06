@@ -41,7 +41,23 @@ public class Game {
         rules();
         Console.clear();
         Console.blankLines(3);
+        play();
+        String playAgain = prompter.prompt("Would you like to play again? [y][n]: ",
+                "(?i)[y,n]", "Invalid selection.  Please try again.");
 
+      while (playAgain.equals("y")) {
+          playerWins = 0;
+          cpuWins = 0;
+          play();
+          playAgain = prompter.prompt("Would you like to play again? [y][n]: ",
+                  "(?i)[y,n]", "Invalid selection.  Please try again.");
+      }
+
+
+    }
+
+
+    private void play () {
         while (playerWins < 5 && cpuWins < 5) {
             String playerInput = prompter.prompt("Please enter your selection: [r]ock [p]aper [s]cissors [l]izard [x]spock ",
                     "(?i)[r,p,s,l,x]", "Invalid selection.  Please try again.");
@@ -77,8 +93,6 @@ public class Game {
             }
         }
     }
-
-
 
     private void win(Choice player, Choice bot) {
         // if comparasionMatrix == 1 player wins.
