@@ -8,7 +8,8 @@ public class Player {
     private int PlayerScore = 0;
 
 
-    // Constructors
+    //constructors
+
     public Player(int id, String name) {
         this.id = id;
         this.name = name;
@@ -32,11 +33,13 @@ public class Player {
         return PlayerScore;
     }
 
+
+
     public Choice randomChoice() {
         Choice choice = null;
         int random = (int) Math.floor(Math.random() * 5);
         choice = Choice.values()[random];
-        System.out.println("bot random" + choice);
+        System.out.println("Bot has selected: " + choice);
 
         return choice;
     }
