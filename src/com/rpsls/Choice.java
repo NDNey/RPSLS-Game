@@ -32,7 +32,7 @@ public enum Choice {
     public static String compare(Choice playerChoice, Choice botChoice) {
         String result = "tie";
 
-        int[][] comparasionMatrix =  //Matrix will help decide case win, lose, tie.
+        int[][] comparisionMatrix =  //Matrix will help decide case win, lose, tie.
                 {{0, 2, 1, 1, 2}, // rock
                         {1, 0, 2, 2, 1}, // paper
                         {2, 1, 0, 1, 2}, // scissors
@@ -42,10 +42,10 @@ public enum Choice {
         int botChoiceIndex = valueOf(botChoice.toString()).ordinal();;
         int playerChoiceIndex = valueOf(playerChoice.toString()).ordinal();
 
-        if(comparasionMatrix[playerChoiceIndex][botChoiceIndex] == 1) {
+        if(comparisionMatrix[playerChoiceIndex][botChoiceIndex] == 1) {
             result = "win";
         }
-        else if (comparasionMatrix[playerChoiceIndex][botChoiceIndex] == 2) {
+        else if (comparisionMatrix[playerChoiceIndex][botChoiceIndex] == 2) {
             result = "lose";
         }
 

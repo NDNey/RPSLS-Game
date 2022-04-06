@@ -76,7 +76,7 @@ public class Game {
     }
 
     private void win(Choice player, Choice bot) {
-        // if comparasionMatrix == 1 player wins.
+        // if comparisionMatrix == 1 player wins.
         if (Choice.compare(player,bot).equals("win")) {
             System.out.println("\n" + ANSI_GREEN + "You win! You gained a point." + ANSI_RESET);
             playerWins++;
