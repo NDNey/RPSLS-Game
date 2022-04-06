@@ -21,6 +21,8 @@ public class Game {
 
     private final Scanner scanner = new Scanner(System.in);
     private static final String bannerPath = "data/banner2.txt";
+    private static final String playerBanner = "data/youwin.txt";
+    private static final String botBanner = "data/cpuwins.txt";
     private static Player bot = new Player(1, "Bot");
     private int playerWins = 0;
     private int cpuWins = 0;
@@ -35,20 +37,38 @@ public class Game {
         Console.blankLines(3);
 
         while (playerWins < 5 && cpuWins < 5) {
-            String playerInput = prompter.prompt("Please enter RPSLS: ", "(?i)[r,p,s,l,x]", "error");
-           Choice playerChoice = Choice.get(playerInput);
+            String playerInput = prompter.prompt("Please enter your selection: [r]ock [p]aper [s]cissors [l]izard [x]spock ",
+                    "(?i)[r,p,s,l,x]", "Invalid selection.  Please try again.");
+            Choice playerChoice = Choice.get(playerInput);
             Choice botChoice = bot.randomChoice();
-            win(playerChoice , botChoice );
-
-
             displayGesture(playerChoice,botChoice);
+            System.out.println(" You selected: " + playerChoice + "         "  + "Bot selected: " + botChoice);
+            win(playerChoice , botChoice );
+            System.out.println("\nScore:  Player: " + playerWins + " || " + "Bot: " + cpuWins + "\n");
 
-            System.out.println("playerChoice: " + playerChoice + ", " + "botChoice: " + botChoice);
-
-            System.out.println("playerWins: " + playerWins);
-            System.out.println("cpuWins: " + cpuWins);
+            if (playerWins == 5) {
+                System.out.println("You are the first to 5 points.  You win the match!");
+                String playerWinArt;
+                try{
+                    playerWinArt = Files.readString(Path.of(playerBanner));
+                    System.out.println(playerWinArt);
+                }
+                catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+            else if (cpuWins == 5){
+                System.out.println("Bot is the first to 5 points.  Bot wins the match!");
+                String botWinArt;
+                try{
+                    botWinArt = Files.readString(Path.of(botBanner));
+                    System.out.println(botWinArt);
+                }
+                catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
         }
-
     }
 
 
@@ -56,18 +76,20 @@ public class Game {
     private void win(Choice player, Choice bot) {
         // if comparasionMatrix == 1 player wins.
         if (Choice.compare(player,bot) == 1) {
-            System.out.println("you win! you get 1 point");
+            System.out.println("\nYou win! You gained a point.");
             playerWins++;
         } else if (Choice.compare(player,bot) == 2) {
-            System.out.println("Computer wins! Computer gets 1 point");
+            System.out.println("\nBot wins! Bot gains a point.");
             cpuWins++;
         }
-
+        else {
+            System.out.println("\nTie! No points awarded.");
+        }
     }
 
 
     private void rules() {
-        String showRules = prompter.prompt("Read Game Rules [Y] [N]: ", "(?i)[y,n]", "error");
+        String showRules = prompter.prompt("Read Game Rules [Y] [N]: ", "(?i)[y,n]", "Invalid selection.  Please try again.");
 
         if (showRules.equals("y")) {
             System.out.println("Game Rules"  //clean up this to show what each one loses to and wins against on one line

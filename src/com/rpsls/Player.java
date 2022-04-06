@@ -39,7 +39,7 @@ public class Player {
         Choice choice = null;
         int random = (int) Math.floor(Math.random() * 5);
         choice = Choice.values()[random];
-        System.out.println("Bot has selected: " + choice);
+
 
         return choice;
     }
