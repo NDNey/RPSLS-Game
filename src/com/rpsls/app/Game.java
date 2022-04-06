@@ -53,10 +53,12 @@ public class Game {
 
     private void play () {
 
+
         while (playerWins < MAX_GAME && cpuWins < MAX_GAME) {
             Console.clear();
 
             String playerInput = PROMPTER.prompt("Please enter your selection: [r]ock [p]aper [s]cissors [l]izard [x]spock: ",
+
                     "(?i)[r,p,s,l,x]", "Invalid selection.  Please try again.");
 
             Choice playerChoice = Choice.get(playerInput);
