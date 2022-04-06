@@ -5,7 +5,7 @@ public enum Choice {
     ROCK, PAPER, SCISSORS, LIZARD, SPOCK;
 
 
-   public static Choice get(String playerChoice) {
+    public static Choice get(String playerChoice) {
         Choice choice = null;
 
         switch (playerChoice.toLowerCase()){
@@ -33,7 +33,7 @@ public enum Choice {
         String result = "tie";
 
         int[][] comparasionMatrix =  //Matrix will help decide case win, lose, tie.
-                        {{0, 2, 1, 1, 2}, // rock
+                {{0, 2, 1, 1, 2}, // rock
                         {1, 0, 2, 2, 1}, // paper
                         {2, 1, 0, 1, 2}, // scissors
                         {2, 1, 2, 0, 1},  // lizard
