@@ -4,7 +4,6 @@ public enum Choice {
 
     ROCK, PAPER, SCISSORS, LIZARD, SPOCK;
 
-
     public static Choice get(String playerChoice) {
         Choice choice = null;
 
