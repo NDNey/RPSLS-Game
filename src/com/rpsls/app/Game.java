@@ -7,9 +7,6 @@ import com.apps.util.Prompter;
 import com.rpsls.Choice;
 import com.rpsls.Player;
 
-//import static com.rpsls.Choice.*;
-
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
