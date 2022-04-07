@@ -27,130 +27,130 @@ public class ChoiceTest {
     //Player chooses ROCK
     @Test
     public void compare_playerChoosesRock_botChoosesRock() {
-        assertEquals(0, Choice.compare(Choice.ROCK, Choice.ROCK));
+        assertEquals("tie", Choice.compare(Choice.ROCK, Choice.ROCK));
     }
 
     @Test
     public void compare_playerChoosesRock_botChoosesPaper() {
-        assertEquals(2, Choice.compare(Choice.ROCK, Choice.PAPER));
+        assertEquals("lose", Choice.compare(Choice.ROCK, Choice.PAPER));
     }
 
     @Test
     public void compare_playerChoosesRock_botChoosesScissors() {
-        assertEquals(1, Choice.compare(Choice.ROCK, Choice.SCISSORS));
+        assertEquals("win", Choice.compare(Choice.ROCK, Choice.SCISSORS));
     }
 
     @Test
     public void compare_playerChoosesRock_botChoosesLizard() {
-        assertEquals(1, Choice.compare(Choice.ROCK, Choice.LIZARD));
+        assertEquals("win", Choice.compare(Choice.ROCK, Choice.LIZARD));
     }
 
     @Test
     public void compare_playerChoosesRock_botChoosesSpock() {
-        assertEquals(2, Choice.compare(Choice.ROCK, Choice.SPOCK));
+        assertEquals("lose", Choice.compare(Choice.ROCK, Choice.SPOCK));
     }
 
     //Player chooses PAPER
     @Test
     public void compare_playerChoosesPaper_botChoosesRock() {
-        assertEquals(1, Choice.compare(Choice.PAPER, Choice.ROCK));
+        assertEquals("win", Choice.compare(Choice.PAPER, Choice.ROCK));
     }
 
     @Test
     public void compare_playerChoosesPaper_botChoosesPaper() {
-        assertEquals(0, Choice.compare(Choice.PAPER, Choice.PAPER));
+        assertEquals("tie", Choice.compare(Choice.PAPER, Choice.PAPER));
     }
 
     @Test
     public void compare_playerChoosesPaper_botChoosesScissors() {
-        assertEquals(2, Choice.compare(Choice.PAPER, Choice.SCISSORS));
+        assertEquals("lose", Choice.compare(Choice.PAPER, Choice.SCISSORS));
     }
 
     @Test
     public void compare_playerChoosesPaper_botChoosesLizard() {
-        assertEquals(2, Choice.compare(Choice.PAPER, Choice.LIZARD));
+        assertEquals("lose", Choice.compare(Choice.PAPER, Choice.LIZARD));
     }
 
     @Test
     public void compare_playerChoosesPaper_botChoosesSpock() {
-        assertEquals(1, Choice.compare(Choice.PAPER, Choice.SPOCK));
+        assertEquals("win", Choice.compare(Choice.PAPER, Choice.SPOCK));
     }
 
     //Player chooses SCISSORS
     @Test
     public void compare_playerChoosesScissors_botChoosesRock() {
-        assertEquals(2, Choice.compare(Choice.SCISSORS, Choice.ROCK));
+        assertEquals("lose", Choice.compare(Choice.SCISSORS, Choice.ROCK));
     }
 
     @Test
     public void compare_playerChoosesScissors_botChoosesPaper() {
-        assertEquals(1, Choice.compare(Choice.SCISSORS, Choice.PAPER));
+        assertEquals("win", Choice.compare(Choice.SCISSORS, Choice.PAPER));
     }
 
     @Test
     public void compare_playerChoosesScissors_botChoosesScissors() {
-        assertEquals(0, Choice.compare(Choice.SCISSORS, Choice.SCISSORS));
+        assertEquals("tie", Choice.compare(Choice.SCISSORS, Choice.SCISSORS));
     }
 
     @Test
     public void compare_playerChoosesScissors_botChoosesLizard() {
-        assertEquals(1, Choice.compare(Choice.SCISSORS, Choice.LIZARD));
+        assertEquals("win", Choice.compare(Choice.SCISSORS, Choice.LIZARD));
     }
 
     @Test
     public void compare_playerChoosesScissors_botChoosesSpock() {
-        assertEquals(2, Choice.compare(Choice.SCISSORS, Choice.SPOCK));
+        assertEquals("lose", Choice.compare(Choice.SCISSORS, Choice.SPOCK));
     }
 
     //Player chooses LIZARD
     @Test
     public void compare_playerChoosesLizard_botChoosesRock() {
-        assertEquals(2, Choice.compare(Choice.LIZARD, Choice.ROCK));
+        assertEquals("lose", Choice.compare(Choice.LIZARD, Choice.ROCK));
     }
 
     @Test
     public void compare_playerChoosesLizard_botChoosesPaper() {
-        assertEquals(1, Choice.compare(Choice.LIZARD, Choice.PAPER));
+        assertEquals("win", Choice.compare(Choice.LIZARD, Choice.PAPER));
     }
 
     @Test
     public void compare_playerChoosesLizard_botChoosesScissors() {
-        assertEquals(2, Choice.compare(Choice.LIZARD, Choice.SCISSORS));
+        assertEquals("lose", Choice.compare(Choice.LIZARD, Choice.SCISSORS));
     }
 
     @Test
     public void compare_playerChoosesLizard_botChoosesLizard() {
-        assertEquals(0, Choice.compare(Choice.LIZARD, Choice.LIZARD));
+        assertEquals("tie", Choice.compare(Choice.LIZARD, Choice.LIZARD));
     }
 
     @Test
     public void compare_playerChoosesLizard_botChoosesSpock() {
-        assertEquals(1, Choice.compare(Choice.LIZARD, Choice.SPOCK));
+        assertEquals("win", Choice.compare(Choice.LIZARD, Choice.SPOCK));
     }
 
     //Player chooses SPOCK
     @Test
     public void compare_playerChoosesSpock_botChoosesRock() {
-        assertEquals(1, Choice.compare(Choice.SPOCK, Choice.ROCK));
+        assertEquals("win", Choice.compare(Choice.SPOCK, Choice.ROCK));
     }
 
     @Test
     public void compare_playerChoosesSpock_botChoosesPaper() {
-        assertEquals(2, Choice.compare(Choice.SPOCK, Choice.PAPER));
+        assertEquals("lose", Choice.compare(Choice.SPOCK, Choice.PAPER));
     }
 
     @Test
     public void compare_playerChoosesSpock_botChoosesScissors() {
-        assertEquals(1, Choice.compare(Choice.SPOCK, Choice.SCISSORS));
+        assertEquals("win", Choice.compare(Choice.SPOCK, Choice.SCISSORS));
     }
 
     @Test
     public void compare_playerChoosesSpock_botChoosesLizard() {
-        assertEquals(2, Choice.compare(Choice.SPOCK, Choice.LIZARD));
+        assertEquals("lose", Choice.compare(Choice.SPOCK, Choice.LIZARD));
     }
 
     @Test
     public void compare_playerChoosesSpock_botChoosesSpock() {
-        assertEquals(0, Choice.compare(Choice.SPOCK, Choice.SPOCK));
+        assertEquals("tie", Choice.compare(Choice.SPOCK, Choice.SPOCK));
     }
 }

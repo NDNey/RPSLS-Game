@@ -1,7 +1,5 @@
 package com.rpsls.client;
 
-
-
 import com.rpsls.app.Game;
 
 class Main   {

@@ -40,7 +40,6 @@ public class Player {
         int random = (int) Math.floor(Math.random() * 5);
         choice = Choice.values()[random];
 
-
         return choice;
     }
 
