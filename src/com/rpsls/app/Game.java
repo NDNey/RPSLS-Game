@@ -23,9 +23,10 @@ public class Game {
     public static final String ANSI_GREEN = "\u001B[42m";
     public static final String ANSI_YELLOW = "\u001B[43m";
 
-    private static Player bot = new Player(1, "bot");
+    private static Player cpu = new Player(1, "bot");
     private int playerWins = 0;
     private int cpuWins = 0;
+
 
 
     public void execute() {
@@ -50,17 +51,16 @@ public class Game {
 
     private void play () {
 
-
         while (playerWins < MAX_GAME && cpuWins < MAX_GAME) {
-
 
             String playerInput = PROMPTER.prompt("Please enter your selection: [r]ock [p]aper [s]cissors [l]izard [x]spock: ",
 
                     "(?i)[r,p,s,l,x]", "Invalid selection.  Please try again.");
+
             Console.clear();
 
             Choice playerChoice = Choice.get(playerInput);
-            Choice botChoice = bot.randomChoice();
+            Choice botChoice = cpu.randomChoice();
 
             displayGesture(playerChoice, botChoice);
 
@@ -124,7 +124,7 @@ public class Game {
     }
 
 
-    public void welcome() {
+    private void welcome() {
 
         String banner = null;
         try {
@@ -138,7 +138,6 @@ public class Game {
         Console.blankLines(1);
         System.out.println("Welcome to RPSLS.  A game created by GI Java.");
         Console.blankLines(1);
-
     }
 
 

@@ -5,7 +5,7 @@ public class Player {
     // Fields
     private final int id;
     private final String name;
-    private int PlayerScore = 0;
+    private int playerScore = 0;
 
 
     //constructors
@@ -17,7 +17,7 @@ public class Player {
 
     //Business methods
     public void win() {
-        PlayerScore++;
+        playerScore++;
     }
 
     //Accessor methods
@@ -30,7 +30,7 @@ public class Player {
     }
 
     public int getWins() {
-        return PlayerScore;
+        return playerScore;
     }
 
 
