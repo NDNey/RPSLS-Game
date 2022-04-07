@@ -33,13 +33,10 @@ public class Player {
         return PlayerScore;
     }
 
-
-
     public Choice randomChoice() {
         Choice choice = null;
         int random = (int) Math.floor(Math.random() * 5);
         choice = Choice.values()[random];
-
 
         return choice;
     }

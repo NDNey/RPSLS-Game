@@ -1,0 +1,15 @@
+Game Rules
+Observe the following rules:
+Rock crushes Scissors.
+Scissors cuts Paper.
+Paper covers Rock.
+Rock crushes Lizard.
+Lizard poisons Spock.
+Spock smashes Scissors.
+Scissors decapitates Lizard.
+Lizard eats Paper.
+Paper disproves Spock.
+Spock vaporizes Rock.
+
+If the gesture you select defeats the opponent's selected gesture, you gain a point.
+The first player to gain 5 points, wins the match!
